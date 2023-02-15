@@ -5,22 +5,34 @@
 
 body {
     margin: 0;
-
     font-family: "Roboto";
+    background-color: aquamarine;
+
+}
+
+#wrapper {
+
+    height: 100vh;
+    margin: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    background-color: aquamarine;
+    transition-property: background-color;
+    transition-duration: 0.5s;
 }
 
+.register_account {
+    background-color: darkgreen;
+}
 
 #container_logo_Header {
 
     display: flex;
     justify-content: space-between;
 }
+
+
 
 #header {
     margin-right: 10px;
@@ -30,7 +42,7 @@ body {
 img {
 
     width: 15%;
-    height: 25%;
+
 }
 
 
@@ -72,13 +84,15 @@ button {
 
 
 #register {
-    margin-top: 5vh;
+    margin-top: 7vh;
     font-size: 17px;
+    text-decoration: underline;
 }
 
 #register>p {
-    text-decoration: underline;
+    margin: 0;
 }
+
 
 
 #info_api {
