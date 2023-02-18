@@ -23,7 +23,7 @@ body {
 }
 
 .register_account {
-    background-color: darkgreen;
+    background-color: seagreen;
 }
 
 #container_logo_Header {
@@ -103,4 +103,9 @@ button {
 p>span {
     color: purple;
     text-decoration: underline;
+}
+
+
+.feedback {
+    opacity: 0.3;
 }
