@@ -109,3 +109,54 @@ p>span {
 .feedback {
     opacity: 0.3;
 }
+
+.connecting {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 70px;
+    width: 90vw;
+    background-color: white;
+    text-align: center;
+
+    border-radius: 20px;
+    position: absolute;
+    top: 250px;
+    left: 5%;
+}
+
+.feedback_square {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    width: 85vw;
+    background-color: white;
+    text-align: center;
+    gap: 10px;
+
+    border-radius: 20px;
+    position: absolute;
+    top: 250px;
+    left: 7.5%;
+}
+
+.feedback_button_close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 33%;
+}
+
+.wrong_login {
+    background-color: white;
+    width: 85vw;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
