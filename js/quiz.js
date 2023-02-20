@@ -18,11 +18,8 @@ function make_quiz_layout(un) {
          <div id="div_containing_img">
 
          </div>
-         <div>
-             <button id="btn_1"></button>
-             <button id="btn_2"></button>
-             <button id="btn_3"></button>
-             <button id="btn_4"></button>
+
+         <div id="options">
          </div>
 
 
@@ -47,7 +44,7 @@ document.getElementById("log_out_button").addEventListener("click", log_out)
 
 
 function log_out(event) {
-    localStorage.clear("quiz_html")
+    localStorage.getItem("quiz_html")
     document.querySelector("body").innerHTML = `<body>
 
     <div id="wrapper">
@@ -80,8 +77,37 @@ function log_out(event) {
 
     </div>
 
-    <script src="js/login_register.js"></script>
-    <script src="js/quiz.js"></script>
 </body>`
 
+}
+
+async function dog_quiz(params) {
+
+
+
+    const dog_rqst = new Request(`https://dog.ceo/api/breeds/image/random`)
+    let response = await fetch_function(dog_rqst)
+
+
+
+    let img_div = document.querySelector("#div_containing_img")
+    let img = document.createElement("img")
+    img_div.append(img)
+    img.src = `${response.message}`
+
+    make_quiz_buttons(4, img.src)
+}
+
+dog_quiz()
+
+
+function make_quiz_buttons(number, src) {
+    console.log(src);
+    let buttons_div = document.querySelector("#options")
+    for (let i = 0; i < number; i++) {
+        let option_buttons = document.createElement("button")
+        buttons_div.append(option_buttons)
+        option_buttons.classList.add("choose_a_dog")
+
+    }
 }
