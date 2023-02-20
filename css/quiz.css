@@ -1,0 +1,30 @@
+#container {
+    height: 100vh;
+    background-color: steelblue;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#log_out_menu {
+    background-color: white;
+    width: 90vw;
+    height: 35px;
+    border-radius: 1vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#log_out_button {
+    height: 90%;
+    width: 20%;
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+#name {
+    margin-left: 5px;
+}

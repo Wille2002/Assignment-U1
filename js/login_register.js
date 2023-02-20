@@ -2,6 +2,10 @@
 
 document.getElementById("register").addEventListener("click", make_register_page)
 
+if (localStorage.getItem("quiz_html")) {
+    document.querySelector("body").innerHTML = localStorage.getItem("quiz_html")
+}
+
 function make_register_page(event) {
     let wrapper = document.getElementById("wrapper")
     wrapper.classList.toggle("register_account")
@@ -58,6 +62,9 @@ async function username_or_login(event) {
     }
 }
 
+
+
+
 async function fetch_function(url) {
     let response = await fetch(url)
     let resource = await response.json()
@@ -69,7 +76,13 @@ async function fetch_function(url) {
     return resource
 }
 
+
+
+
+
+
 async function feedback_login(get_rqst) {
+
     let wrapper = document.querySelector("#wrapper")
     let body = document.querySelector("body")
     wrapper.classList.add("feedback")
@@ -78,17 +91,12 @@ async function feedback_login(get_rqst) {
     body.appendChild(feedback)
     feedback.classList.add("connecting")
 
-
-
-
     let response = await fetch_function(get_rqst)
 
     let wrong_login = document.querySelector("h3")
 
     switch (response.status) {
-        case 200:
-            document.querySelector("h3").classList.remove("wrong_login")
-            break
+
         case 418:
             feedback.textContent = "The server think it`s not a teapot"
 
@@ -109,7 +117,18 @@ async function feedback_login(get_rqst) {
             break;
 
     }
+    let user = document.querySelector("#user_name").value
+    let pass = document.querySelector("#password").value
+
+
+    if (response.data.password === pass && response.data.user_name === user) {
+
+        make_quiz_layout(user)
+    }
 }
+
+
+
 
 
 
@@ -136,7 +155,7 @@ async function make_feedback_square(post_rqst) {
             feedback.textContent = "Sorry that name is taken. Please try with another one"
             break
         case 400:
-            feedback.textContent = "Sorry that name is taken. Please try with another one"
+            feedback.textContent = "Bad request"
             break
         default:
             feedback.textContent = "Registration Complete. Please proceed to Login"
@@ -156,6 +175,9 @@ async function make_feedback_square(post_rqst) {
 
 
 }
+
+
+
 
 function remove_closing_button(event) {
 
