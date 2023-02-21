@@ -4,6 +4,7 @@ document.getElementById("register").addEventListener("click", make_register_page
 
 if (localStorage.getItem("quiz_html")) {
     document.querySelector("body").innerHTML = localStorage.getItem("quiz_html")
+    document.getElementById("log_out_button").addEventListener("click", log_out)
 }
 
 function make_register_page(event) {

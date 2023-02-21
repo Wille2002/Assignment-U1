@@ -1,94 +1,95 @@
 "use strict"
 
 function make_quiz_layout(un) {
+
+
     let body = document.querySelector("body")
     body.innerHTML = `
-    <body>
+    <body"> 
     <div id="container">
-        <div id="container_logo_Header">
-            <img src="media/logo.png" alt="">
-            <p id="header">Dog Breed Quiz</p>
-        </div>
-
-        <div id="log_out_menu">
-        <p id="name"></p>
-        <button id="log_out_button">logout</button>
-         </div>
-
-         <div id="div_containing_img">
-
-         </div>
-
-         <div id="options">
-         </div>
-
-
-        <p id="info_api">The Dog Breed Quiz is made possible thanks to the free API by <span>DOG CEO Zine</span></p>
-
+    <div id="container_logo_Header">
+    <img src="media/logo.png" alt="">
+    <p id="header">Dog Breed Quiz</p>
     </div>
-
+    
+    <div id="log_out_menu">
+    <p id="name"></p>
+    <button id="log_out_button">logout</button>
+    </div>
+    
+    <div id="div_containing_img">
+    
+    </div>
+    
+    <div id="options">
+    </div>
+    
+    
+    <p id="info_api">The Dog Breed Quiz is made possible thanks to the free API by <span>DOG CEO Zine</span></p>
+    
+    </div>
+    
     </body>
-`
+    `
     document.getElementById("name").textContent = un
 
     localStorage.setItem("quiz_html", body.innerHTML)
 
-
+    dog_quiz()
+    document.getElementById("log_out_button").addEventListener("click", log_out)
 
 }
-
-
-
-
 document.getElementById("log_out_button").addEventListener("click", log_out)
 
 
+
+
 function log_out(event) {
-    localStorage.getItem("quiz_html")
+    localStorage.clear("quiz_html")
     document.querySelector("body").innerHTML = `<body>
-
+    
     <div id="wrapper">
-        <div id="container_logo_Header">
-            <img src="media/logo.png" alt="">
-            <p id="header">Dog Breed Quiz</p>
-        </div>
-
-        <h1>LOGIN</h1>
-
-
-        <div class="input_fields">
-            <h2>User Name:</h2>
-            <input type="text" id="user_name">
-        </div>
-        <div class="input_fields">
-            <h2>Password:</h2>
-            <input type="password" id="password">
-        </div>
-
-        <h3>let the magic start</h3>
-
-        <button id="login_or_register">Login</button>
-
-        <div id="register">
-            <p>New to this? Register for free</p>
-        </div>
-
-        <p id="info_api">The Dog Breed Quiz is made possible thanks to the free API by <span>DOG CEO Zine</span></p>
-
+    <div id="container_logo_Header">
+    <img src="media/logo.png" alt="">
+    <p id="header">Dog Breed Quiz</p>
     </div>
+    
+    <h1>LOGIN</h1>
+    
+    
+    <div class="input_fields">
+    <h2>User Name:</h2>
+    <input type="text" id="user_name">
+    </div>
+    <div class="input_fields">
+    <h2>Password:</h2>
+    <input type="password" id="password">
+    </div>
+    
+    <h3>let the magic start</h3>
+    
+    <button id="login_or_register">Login</button>
+    
+    <div id="register">
+    <p>New to this? Register for free</p>
+    </div>
+    
+    <p id="info_api">The Dog Breed Quiz is made possible thanks to the free API by <span>DOG CEO Zine</span></p>
+    
+    </div>
+    
+    </body>`
 
-</body>`
-
+    document.getElementById("register").addEventListener("click", make_register_page)
+    document.querySelector("#login_or_register").addEventListener("click", username_or_login)
 }
+dog_quiz()
 
 async function dog_quiz(params) {
 
 
-
     const dog_rqst = new Request(`https://dog.ceo/api/breeds/image/random`)
     let response = await fetch_function(dog_rqst)
-
-
 
     let img_div = document.querySelector("#div_containing_img")
     let img = document.createElement("img")
@@ -98,7 +99,7 @@ async function dog_quiz(params) {
     make_quiz_buttons(4, img.src)
 }
 
-dog_quiz()
+
 
 
 function make_quiz_buttons(number, src) {
