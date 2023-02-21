@@ -3,7 +3,9 @@
 function make_quiz_layout(un) {
 
 
+
     let body = document.querySelector("body")
+
     body.innerHTML = `
     <body"> 
     <div id="container">
@@ -82,13 +84,18 @@ function log_out(event) {
 
     document.getElementById("register").addEventListener("click", make_register_page)
     document.querySelector("#login_or_register").addEventListener("click", username_or_login)
+
+
 }
 dog_quiz()
 
 async function dog_quiz(params) {
 
+    let random_number = get_number(ALL_BREEDS.length)
+    let dog_url = ALL_BREEDS[random_number].url
+    let dog_name = ALL_BREEDS[random_number].name
 
-    const dog_rqst = new Request(`https://dog.ceo/api/breeds/image/random`)
+    const dog_rqst = new Request(`https://dog.ceo/api/breed/${dog_url}/images/random`)
     let response = await fetch_function(dog_rqst)
 
     let img_div = document.querySelector("#div_containing_img")
@@ -96,19 +103,44 @@ async function dog_quiz(params) {
     img_div.append(img)
     img.src = `${response.message}`
 
-    make_quiz_buttons(4, img.src)
+    make_quiz_buttons(4, dog_name)
 }
 
 
+function make_quiz_buttons(number, dog_name) {
 
+    let random_button = get_number(4)
 
-function make_quiz_buttons(number, src) {
-    console.log(src);
     let buttons_div = document.querySelector("#options")
     for (let i = 0; i < number; i++) {
         let option_buttons = document.createElement("button")
         buttons_div.append(option_buttons)
         option_buttons.classList.add("choose_a_dog")
+        option_buttons.setAttribute("id", i)
 
     }
+
+
+    let index_position = get_number(number)
+    create_choises(index_position, dog_name)
+}
+
+// let right_awnser = document.getElementById(`${random_button}`)
+//right_awnser.textContent = dog_name
+
+
+function create_choises(index_position, correct_dog) {
+    console.log(correct_dog);
+    for (let i = 0; i < 4; i++) {
+        let random_number = get_number(ALL_BREEDS.length)
+        let dog_name = ALL_BREEDS[random_number].name
+        document.getElementById(`${i}`).textContent = dog_name
+    }
+    document.getElementById(`${index_position}`).textContent = correct_dog
+
+}
+
+
+function get_number(length) {
+    return Math.floor(Math.random() * length);
 }

@@ -4,7 +4,7 @@ document.getElementById("register").addEventListener("click", make_register_page
 
 if (localStorage.getItem("quiz_html")) {
     document.querySelector("body").innerHTML = localStorage.getItem("quiz_html")
-    document.getElementById("log_out_button").addEventListener("click", log_out)
+
 }
 
 function make_register_page(event) {
@@ -62,22 +62,6 @@ async function username_or_login(event) {
         feedback_login(get_rqst)
     }
 }
-
-
-
-
-async function fetch_function(url) {
-    let response = await fetch(url)
-    let resource = await response.json()
-    if (response.status !== 200) {
-        return response
-    }
-    console.log(response);
-    console.log(resource);
-    return resource
-}
-
-
 
 
 

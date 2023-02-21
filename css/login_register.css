@@ -3,10 +3,12 @@
     src: url(../fonts/RobotoCondensed-Regular.ttf);
 }
 
+
 body {
     margin: 0;
     font-family: "Roboto";
     background-color: aquamarine;
+
 
 }
 
@@ -17,12 +19,14 @@ body {
     align-items: center;
     flex-direction: column;
 
+
     transition-property: background-color;
     transition-duration: 0.5s;
 }
 
 .register_account {
     background-color: seagreen;
+
 }
 
 #container_logo_Header {
