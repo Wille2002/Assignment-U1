@@ -44,9 +44,10 @@ function make_quiz_layout(un) {
 document.getElementById("log_out_button").addEventListener("click", log_out)
 
 
-
+dog_quiz()
 
 function log_out(event) {
+
     localStorage.clear("quiz_html")
     document.querySelector("body").innerHTML = `<body>
     
@@ -87,7 +88,7 @@ function log_out(event) {
 
 
 }
-dog_quiz()
+
 
 async function dog_quiz(params) {
 
@@ -125,8 +126,6 @@ function make_quiz_buttons(number, dog_name) {
     create_choises(index_position, dog_name)
 }
 
-// let right_awnser = document.getElementById(`${random_button}`)
-//right_awnser.textContent = dog_name
 
 
 function create_choises(index_position, correct_dog) {
@@ -138,9 +137,75 @@ function create_choises(index_position, correct_dog) {
     }
     document.getElementById(`${index_position}`).textContent = correct_dog
 
+    document.getElementById("0").addEventListener("click", check_right_awnser)
+    document.getElementById("1").addEventListener("click", check_right_awnser)
+    document.getElementById("2").addEventListener("click", check_right_awnser)
+    document.getElementById("3").addEventListener("click", check_right_awnser)
+
+    function check_right_awnser(event) {
+        if (correct_dog === event.target.textContent) {
+            awnser_correct()
+        } else {
+            awnser_incorrect()
+        }
+    }
 }
 
 
 function get_number(length) {
     return Math.floor(Math.random() * length);
 }
+
+
+function awnser_correct() {
+    let container = document.querySelector("#container")
+    let body = document.querySelector("body")
+    container.classList.add("awnser_feedback")
+    let awnser = document.createElement("div")
+    body.appendChild(awnser)
+    awnser.classList.add("awnser_square")
+    awnser.style.backgroundColor = "lime"
+    awnser.textContent = "CORRECT!"
+
+    let new_question_button = document.createElement("button")
+    new_question_button.textContent = "ONE MORE"
+    awnser.appendChild(new_question_button)
+    new_question_button.classList.add("awnser_button")
+
+    new_question_button.addEventListener("click", new_question)
+
+    async function new_question(event) {
+        awnser.remove()
+        container.classList.remove("awnser_feedback")
+        let un = document.querySelector("#name").textContent
+        make_quiz_layout(un)
+    }
+}
+
+function awnser_incorrect() {
+    let container = document.querySelector("#container")
+    let body = document.querySelector("body")
+    container.classList.add("awnser_feedback")
+    let awnser = document.createElement("div")
+    body.appendChild(awnser)
+    awnser.classList.add("awnser_square")
+    awnser.style.backgroundColor = "orange"
+    awnser.textContent = "I`m afraid not...:-("
+
+    let new_question_button = document.createElement("button")
+    new_question_button.textContent = "ONE MORE"
+    awnser.appendChild(new_question_button)
+    new_question_button.classList.add("awnser_button")
+
+    new_question_button.addEventListener("click", new_question)
+
+
+    async function new_question(event) {
+        awnser.remove()
+        container.classList.remove("awnser_feedback")
+        let un = document.querySelector("#name").textContent
+        make_quiz_layout(un)
+    }
+
+}
+

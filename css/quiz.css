@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
 }
 
 
@@ -59,4 +60,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.awnser_feedback {
+    opacity: 0.3;
+}
+
+
+
+.awnser_square {
+
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    width: 85vw;
+    background-color: white;
+    text-align: center;
+    gap: 10px;
+
+    font-size: 25px;
+    border-radius: 20px;
+    position: absolute;
+    top: 250px;
+    left: 7.5%;
+    border: 1px solid white;
+}
+
+.awnser_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 33%;
 }
