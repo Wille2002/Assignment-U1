@@ -166,12 +166,15 @@ function create_choises(index_position, correct_dog) {
 }
 
 
-function get_number(length) {
-    return Math.floor(Math.random() * length);
-}
 
 
 function awnser_correct() {
+    for (let i = 0; i < 4; i++) {
+        let buttons = document.getElementById(`${i}`)
+        buttons.disabled = true
+    }
+    document.getElementById("log_out_button").disabled = true
+
     let container = document.querySelector("#container");
     let body = document.querySelector("body");
     container.classList.add("awnser_feedback");
@@ -197,6 +200,13 @@ function awnser_correct() {
 }
 
 function awnser_incorrect() {
+
+    for (let i = 0; i < 4; i++) {
+        let buttons = document.getElementById(`${i}`)
+        buttons.disabled = true
+    }
+    document.getElementById("log_out_button").disabled = true
+
     let container = document.querySelector("#container");
     let body = document.querySelector("body");
     container.classList.add("awnser_feedback");
